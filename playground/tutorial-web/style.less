@@ -8,7 +8,35 @@
 body {
   height: 100vh;
   width: 100vw;
-  padding: 8px;
+  padding: 8px
+}
+
+.p-list {
+  margin-top: 20px;
+
+  ul {
+    margin: 20px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+
+    div {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+
+      input {
+        margin-left: 10px;
+      }
+    }
+
+    div + div {
+        margin-top: 10px;
+    }
+  }
 }
 
 .b {
