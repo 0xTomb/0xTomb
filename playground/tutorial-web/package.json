@@ -8,7 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "ganache": "ganache",
     "dev": "vite --port 4000",
-    "migrate": "cd contracts && truffle migrate --network development"
+    "migrate": "cd contracts && truffle migrate --network development",
+    "pretty": "prettier --write ."
   },
   "keywords": [],
   "author": "",

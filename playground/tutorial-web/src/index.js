@@ -1,15 +1,24 @@
 import Web3 from 'web3'
 import classNames from 'classnames'
 
-import { abi as CONTRACT_ABI, networks } from "../contracts/build/contracts/Contracts.json";
+import {
+  abi as CONTRACT_ABI,
+  networks
+} from '../contracts/build/contracts/Contracts.json'
+import '../style.less'
 
 const CONTRACT_ADDRESS = Object.values(networks).pop().address
 
-import '../style.less'
+let [mounted, accounts, balance, f, persons, tempC] = [
+  false,
+  [],
+  '',
+  Element.prototype.addEventListener,
+  [],
+  null
+]
 
-let [mounted, accounts, balance, f, persons, tempC] = [false, [], '', Element.prototype.addEventListener, [], null]
-
-Element.prototype.addEventListener = function(type, listener) {
+Element.prototype.addEventListener = function (type, listener) {
   Element.prototype.removeEventListener.call(this, type, listener)
   f.call(this, type, listener)
 }
@@ -27,7 +36,7 @@ async function getPerson() {
   }
   const totalP = await tempC.methods.count().call()
 
-  for (let i =1; i <= totalP; i++) {
+  for (let i = 1; i <= totalP; i++) {
     const p = await tempC.methods.persons(i - 1).call()
     persons.push(p)
   }
@@ -67,7 +76,6 @@ async function transfer() {
   }
 }
 
-
 async function add(e) {
   e.preventDefault()
   const form = document.querySelector('#form')
@@ -75,38 +83,51 @@ async function add(e) {
   const name = data.get('name')
   const email = data.get('email')
   const rich = data.get('rich') === 'on'
-  await tempC.methods.createPerson(name, email, rich).send({ from: accounts[0] })
+  await tempC.methods
+    .createPerson(name, email, rich)
+    .send({ from: accounts[0] })
   await getBalance()
   await getPerson()
   doTotalRender()
 }
 
 function doTotalRender() {
-  console.log(persons)
   document.querySelector('#app').innerHTML = `
   <div>
     <h1>Hello World</h1>
     
-    <div class="${classNames({ none: accounts.length === 0 })}">
-      <p>Current Account Address: <span id="account-add">${accounts[0]}</span></p>
-      <p class="b">Account Balance: ${balance} ETH</p>
+    <div class='${classNames({ none: accounts.length === 0 })}'>
+      <p>Current Account Address: <span id='account-add'>${
+        accounts[0]
+      }</span></p>
+      <p class='b'>Account Balance: ${balance} ETH</p>
     </div>
     
     
-    <button id="link" class="${classNames({ none: accounts.length !== 0 })}">Link Metamask</button>
+    <button
+      id='link'
+      class='${classNames({ none: accounts.length !== 0 })}'
+    >Link Metamask</button>
     
-    <button class="${classNames({ none: accounts.length === 0 })}" id="transfer">Transfer 10 ETH</button>
+    <button
+      class='${classNames({ none: accounts.length === 0 })}'
+      id='transfer'
+    >Transfer 10 ETH</button>
     
-    <div class="${classNames('p-list', { none: accounts.length === 0 })}">
+    <div class='${classNames('p-list', { none: accounts.length === 0 })}'>
       <h2>Persons</h2>
       <ul>
-        ${persons.map(p => `<li>Name: ${p.name}  email: ${p.email} rich: ${p.rich}</li>`).join('')}
+        ${persons
+          .map(
+            p => `<li>Name: ${p.name}  email: ${p.email} rich: ${p.rich}</li>`
+          )
+          .join('')}
       </ul>
-      <form id="form">
-        <div>Name: <input type="text" name="name" placeholder="Name" /></div>
-        <div>Email: <input type="text" name="email" placeholder="Email" /></div>
-        <div>Rich: <input type="checkbox" name="rich"></div>
-        <button type="submit" id="add">Add</button>
+      <form id='form'>
+        <div>Name: <input type='text' name='name' placeholder='Name' /></div>
+        <div>Email: <input type='text' name='email' placeholder='Email' /></div>
+        <div>Rich: <input type='checkbox' name='rich'></div>
+        <button type='submit' id='add'>Add</button>
       </form>
     </div> 
   </div>

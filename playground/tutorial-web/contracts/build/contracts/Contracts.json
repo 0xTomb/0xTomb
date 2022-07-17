@@ -94,21 +94,14 @@
   "ast": {
     "absolutePath": "project:/contracts/contracts.sol",
     "exportedSymbols": {
-      "Contracts": [
-        52
-      ]
+      "Contracts": [52]
     },
     "id": 53,
     "nodeType": "SourceUnit",
     "nodes": [
       {
         "id": 1,
-        "literals": [
-          "solidity",
-          "^",
-          "0.5",
-          ".4"
-        ],
+        "literals": ["solidity", "^", "0.5", ".4"],
         "nodeType": "PragmaDirective",
         "src": "0:23:0"
       },
@@ -119,9 +112,7 @@
         "documentation": null,
         "fullyImplemented": true,
         "id": 52,
-        "linearizedBaseContracts": [
-          52
-        ],
+        "linearizedBaseContracts": [52],
         "name": "Contracts",
         "nodeType": "ContractDefinition",
         "nodes": [
@@ -783,20 +774,13 @@
     "attributes": {
       "absolutePath": "project:/contracts/contracts.sol",
       "exportedSymbols": {
-        "Contracts": [
-          52
-        ]
+        "Contracts": [52]
       }
     },
     "children": [
       {
         "attributes": {
-          "literals": [
-            "solidity",
-            "^",
-            "0.5",
-            ".4"
-          ]
+          "literals": ["solidity", "^", "0.5", ".4"]
         },
         "id": 1,
         "name": "PragmaDirective",
@@ -804,18 +788,12 @@
       },
       {
         "attributes": {
-          "baseContracts": [
-            null
-          ],
-          "contractDependencies": [
-            null
-          ],
+          "baseContracts": [null],
+          "contractDependencies": [null],
           "contractKind": "contract",
           "documentation": null,
           "fullyImplemented": true,
-          "linearizedBaseContracts": [
-            52
-          ],
+          "linearizedBaseContracts": [52],
           "name": "Contracts",
           "scope": 53
         },
@@ -985,9 +963,7 @@
               "implemented": true,
               "isConstructor": true,
               "kind": "constructor",
-              "modifiers": [
-                null
-              ],
+              "modifiers": [null],
               "name": "",
               "scope": 52,
               "stateMutability": "nonpayable",
@@ -997,9 +973,7 @@
             "children": [
               {
                 "attributes": {
-                  "parameters": [
-                    null
-                  ]
+                  "parameters": [null]
                 },
                 "children": [],
                 "id": 14,
@@ -1008,9 +982,7 @@
               },
               {
                 "attributes": {
-                  "parameters": [
-                    null
-                  ]
+                  "parameters": [null]
                 },
                 "children": [],
                 "id": 15,
@@ -1029,9 +1001,7 @@
                           "isPure": false,
                           "isStructConstructorCall": false,
                           "lValueRequested": false,
-                          "names": [
-                            null
-                          ],
+                          "names": [null],
                           "type": "tuple()",
                           "type_conversion": false
                         },
@@ -1052,9 +1022,7 @@
                                   "typeString": "bool"
                                 }
                               ],
-                              "overloadedDeclarations": [
-                                null
-                              ],
+                              "overloadedDeclarations": [null],
                               "referencedDeclaration": 51,
                               "type": "function (string memory,string memory,bool)",
                               "value": "createPerson"
@@ -1187,9 +1155,7 @@
               "implemented": true,
               "isConstructor": false,
               "kind": "function",
-              "modifiers": [
-                null
-              ],
+              "modifiers": [null],
               "name": "createPerson",
               "scope": 52,
               "stateMutability": "nonpayable",
@@ -1284,9 +1250,7 @@
               },
               {
                 "attributes": {
-                  "parameters": [
-                    null
-                  ]
+                  "parameters": [null]
                 },
                 "children": [],
                 "id": 35,
@@ -1321,9 +1285,7 @@
                               {
                                 "attributes": {
                                   "argumentTypes": null,
-                                  "overloadedDeclarations": [
-                                    null
-                                  ],
+                                  "overloadedDeclarations": [null],
                                   "referencedDeclaration": 27,
                                   "type": "mapping(uint256 => struct Contracts.PersonInfo storage ref)",
                                   "value": "persons"
@@ -1335,9 +1297,7 @@
                               {
                                 "attributes": {
                                   "argumentTypes": null,
-                                  "overloadedDeclarations": [
-                                    null
-                                  ],
+                                  "overloadedDeclarations": [null],
                                   "referencedDeclaration": 4,
                                   "type": "uint256",
                                   "value": "count"
@@ -1359,9 +1319,7 @@
                               "isPure": false,
                               "isStructConstructorCall": true,
                               "lValueRequested": false,
-                              "names": [
-                                null
-                              ],
+                              "names": [null],
                               "type": "struct Contracts.PersonInfo memory",
                               "type_conversion": false
                             },
@@ -1386,9 +1344,7 @@
                                       "typeString": "bool"
                                     }
                                   ],
-                                  "overloadedDeclarations": [
-                                    null
-                                  ],
+                                  "overloadedDeclarations": [null],
                                   "referencedDeclaration": 13,
                                   "type": "type(struct Contracts.PersonInfo storage pointer)",
                                   "value": "PersonInfo"
@@ -1400,9 +1356,7 @@
                               {
                                 "attributes": {
                                   "argumentTypes": null,
-                                  "overloadedDeclarations": [
-                                    null
-                                  ],
+                                  "overloadedDeclarations": [null],
                                   "referencedDeclaration": 4,
                                   "type": "uint256",
                                   "value": "count"
@@ -1414,9 +1368,7 @@
                               {
                                 "attributes": {
                                   "argumentTypes": null,
-                                  "overloadedDeclarations": [
-                                    null
-                                  ],
+                                  "overloadedDeclarations": [null],
                                   "referencedDeclaration": 29,
                                   "type": "string memory",
                                   "value": "_name"
@@ -1428,9 +1380,7 @@
                               {
                                 "attributes": {
                                   "argumentTypes": null,
-                                  "overloadedDeclarations": [
-                                    null
-                                  ],
+                                  "overloadedDeclarations": [null],
                                   "referencedDeclaration": 31,
                                   "type": "string memory",
                                   "value": "_email"
@@ -1442,9 +1392,7 @@
                               {
                                 "attributes": {
                                   "argumentTypes": null,
-                                  "overloadedDeclarations": [
-                                    null
-                                  ],
+                                  "overloadedDeclarations": [null],
                                   "referencedDeclaration": 33,
                                   "type": "bool",
                                   "value": "_rich"
@@ -1485,9 +1433,7 @@
                           {
                             "attributes": {
                               "argumentTypes": null,
-                              "overloadedDeclarations": [
-                                null
-                              ],
+                              "overloadedDeclarations": [null],
                               "referencedDeclaration": 4,
                               "type": "uint256",
                               "value": "count"
