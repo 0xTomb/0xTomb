@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:tomb-web": "pnpm -F '@tomb/tomb-web' run dev"
+    "dev:tomb-web": "pnpm -F '@tomb/tomb-web' run dev",
+    "pretty:tomb-web": "pnpm -F '@tomb/tomb-web' run pretty"
   },
   "keywords": [],
   "author": "",
