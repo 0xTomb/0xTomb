@@ -33,13 +33,14 @@ const Menu = forwardRef<RefFunc>((props, ref) => {
       <header className={classNames(styles.header, 'text-2xl leading-12 absolute left-1/2 -translate-x-1/2')}>
         0XTOMBS
       </header>
-      <ul className="flex h-full space-x-5 ml-auto">
+      <ul className={classNames(styles['right-menu'], 'flex h-full space-x-5 ml-auto')}>
         <li className="font-bold leading-12 shrink-0">CONNECT WALLET</li>
         <li className="font-bold leading-12 shrink-0">TWITTER</li>
         <li className="font-bold leading-12 shrink-0">OPENSEA</li>
         <li className="font-bold leading-12 shrink-0">DISCORD</li>
         <li className="font-bold leading-12 shrink-0">ETHERSCAN</li>
       </ul>
+      <i className="iconfont icon-caidan text-xl hidden font-bold leading-12 ml-auto" />
     </menu>
   )
 })
