@@ -15,6 +15,7 @@ const HomePage: FC = () => {
     if (!on) {
       setOn(true)
       menuRef.current?.slideMenu()
+      hotZoneRef.current?.classList.add('hidden')
       hotZoneRef.current?.removeEventListener('mouseenter', handleEnterHotZone)
     }
   }
@@ -23,11 +24,11 @@ const HomePage: FC = () => {
     <div className={classNames(styles.home, 'h-screen', 'w-screen')}>
       <Menu ref={menuRef} />
       <div
-        className="w-10/12 h-4/5 absolute absolute-screen-center z-10"
+        className="w-10/12 h-4/5 absolute absolute-screen-center z-20"
         ref={hotZoneRef}
         onMouseEnter={handleEnterHotZone}
       ></div>
-      <div className="absolute bottom-5 left-8 flex items-end">
+      <div className="absolute bottom-5 left-8 flex items-end select-none">
         <img src={GATE1} alt="gate1" className="w-48 h-3/5" />
         <img
           src={DOOR}
@@ -38,11 +39,11 @@ const HomePage: FC = () => {
       </div>
       <main
         style={on ? { top: '50%', opacity: 1 } : {}}
-        className="absolute text-5xl font-bold absolute-screen-center transition-all transform-gpu top-16 duration-[2000ms] opacity-0"
+        className="absolute text-5xl font-bold absolute-screen-center transition-all transform-gpu top-16 duration-[2000ms] opacity-0 z-10"
       >
         WELCOME TO 0XTOMB
       </main>
-      <div className="absolute bottom-5 right-8 flex transform -scale-x-[1] items-end">
+      <div className="absolute bottom-5 right-8 flex transform -scale-x-[1] items-end select-none">
         <img src={GATE1} alt="gate1" className="w-48 h-1/2" />
         <img
           src={DOOR}

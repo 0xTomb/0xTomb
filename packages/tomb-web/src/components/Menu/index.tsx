@@ -1,4 +1,4 @@
-import React, { forwardRef, useImperativeHandle, useState } from 'react'
+import React, { forwardRef, useImperativeHandle, useRef } from 'react'
 import classNames from 'classnames'
 
 import styles from './style.module.less'
@@ -8,11 +8,11 @@ type RefFunc = {
 }
 
 const Menu = forwardRef<RefFunc>((props, ref) => {
-  const [menuSlide, setMenuSlide] = useState(false)
+  const menuRef = useRef<HTMLMenuElement>(null)
 
   useImperativeHandle(ref, () => ({
     slideMenu: () => {
-      setMenuSlide(true)
+      menuRef.current?.classList.add('!top-0')
     }
   }))
 
@@ -20,9 +20,9 @@ const Menu = forwardRef<RefFunc>((props, ref) => {
     <menu
       className={classNames(
         styles.menu,
-        'w-full bg-neutral-800 h-12 px-3 absolute flex items-center transition-top duration-[2000ms]'
+        'text-[#d9d2c0] w-full bg-neutral-800 h-12 px-3 absolute flex items-center transition-top duration-[2000ms] top-[-32px]'
       )}
-      style={menuSlide ? { top: 0 } : {}}
+      ref={menuRef}
     >
       <ul className={classNames(styles['left-menu'], 'flex h-full')}>
         <li className="text-xl font-bold leading-12 shrink-0">HOME</li>
