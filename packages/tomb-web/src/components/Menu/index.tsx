@@ -24,19 +24,21 @@ const Menu = forwardRef<RefFunc>((props, ref) => {
       )}
       style={menuSlide ? { top: 0 } : {}}
     >
-      <ul className="flex h-full space-x-5">
-        <li className="text-xl font-bold leading-12 shrink-0">+ HOME</li>
-        <li className="text-xl font-bold leading-12 shrink-0">+ EPITAPH</li>
-        <li className="text-xl font-bold leading-12 shrink-0">+ MY TOMBS</li>
-        <li className="text-xl font-bold leading-12 shrink-0">+ DOCS</li>
+      <ul className={classNames(styles['left-menu'], 'flex h-full')}>
+        <li className="text-xl font-bold leading-12 shrink-0">HOME</li>
+        <li className="text-xl font-bold leading-12 shrink-0">EPITAPH</li>
+        <li className="text-xl font-bold leading-12 shrink-0">MY TOMBS</li>
+        <li className="text-xl font-bold leading-12 shrink-0">DOCS</li>
       </ul>
-      <header className={classNames(styles.header, 'text-xl relative leading-12 mx-auto')}>0XTOMBS</header>
-      <ul className="flex h-full space-x-5">
-        <li className="text-xs font-bold leading-12 shrink-0">CONNECT WALLET</li>
-        <li className="text-xs font-bold leading-12 shrink-0">TWITTER</li>
-        <li className="text-xs font-bold leading-12 shrink-0">OPENSEA</li>
-        <li className="text-xs font-bold leading-12 shrink-0">DISCORD</li>
-        <li className="text-xs font-bold leading-12 shrink-0">ETHERSCAN</li>
+      <header className={classNames(styles.header, 'text-2xl leading-12 absolute left-1/2 -translate-x-1/2')}>
+        0XTOMBS
+      </header>
+      <ul className="flex h-full space-x-5 ml-auto">
+        <li className="font-bold leading-12 shrink-0">CONNECT WALLET</li>
+        <li className="font-bold leading-12 shrink-0">TWITTER</li>
+        <li className="font-bold leading-12 shrink-0">OPENSEA</li>
+        <li className="font-bold leading-12 shrink-0">DISCORD</li>
+        <li className="font-bold leading-12 shrink-0">ETHERSCAN</li>
       </ul>
     </menu>
   )

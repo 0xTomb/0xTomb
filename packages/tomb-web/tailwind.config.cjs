@@ -9,7 +9,8 @@ module.exports = {
       transitionProperty: {
         top: 'top'
       }
-    }
+    },
+    screens: {}
   },
   plugins: []
 }
