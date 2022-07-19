@@ -4,9 +4,11 @@ type Props = {
   width?: number
   height?: number
   reverse?: boolean
+  className?: string
+  onClick?: React.ReactEventHandler<HTMLButtonElement>
 }
 
-const Button: FC<PropsWithChildren<Props>> = ({ children, width = 148, height = 48, reverse }) => {
+const Button: FC<PropsWithChildren<Props>> = ({ children, width = 148, height = 48, reverse, onClick }) => {
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
 
   const shadowPadding = 12
@@ -44,7 +46,7 @@ const Button: FC<PropsWithChildren<Props>> = ({ children, width = 148, height = 
   }, [])
 
   return (
-    <div className="relative">
+    <div className="relative z-10">
       <canvas
         ref={canvasRef}
         className="absolute z-[-1]"
@@ -71,6 +73,7 @@ const Button: FC<PropsWithChildren<Props>> = ({ children, width = 148, height = 
           height: height - delta,
           backgroundColor: reverse ? color2 : color1
         }}
+        onClick={onClick}
       >
         {children}
       </button>
