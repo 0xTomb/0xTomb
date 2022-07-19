@@ -48,10 +48,10 @@ const HomePage: FC = () => {
         />
       </div>
       <main
-        style={on ? { top: '50%', opacity: 1 } : {}}
-        className="absolute text-8xl font-bold absolute-screen-center transition-all transform-gpu top-16 duration-[2000ms] opacity-0 z-10 w-fit"
+        style={on ? { top: '35%', opacity: 1 } : {}}
+        className="absolute left-1/2 -translate-x-1/2 top-1 transition-all transform-gpu duration-[2000ms] opacity-0 z-10 w-fit border-8 px-3 py-3 border-neutral-800 bg-[#D9D2C0]"
       >
-        WELCOME TO 0XTOMB
+        <div className="border-4 border-neutral-800 px-16 py-8 text-8xl font-bold bg-[#D9D2C0]">WELCOME TO 0XTOMB</div>
       </main>
       <div
         className={classNames(
@@ -70,7 +70,12 @@ const HomePage: FC = () => {
         />
       </div>
 
-      <main className={classNames('absolute bottom-[160px] left-1/2 -translate-x-1/2 transition-all duration-[2000ms] opacity-0', { 'opacity-100': on })}>
+      <main
+        className={classNames(
+          'absolute bottom-[160px] left-1/2 -translate-x-1/2 transition-all duration-[2000ms] opacity-0',
+          { 'opacity-100': on }
+        )}
+      >
         <Button>
           <span className={classNames(styles['btn-text'], 'text-2xl text-white')}>R . I . P</span>
         </Button>

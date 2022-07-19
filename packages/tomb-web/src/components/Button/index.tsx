@@ -3,18 +3,24 @@ import React, { FC, PropsWithChildren, useEffect } from 'react'
 type Props = {
   width?: number
   height?: number
+  reverse?: boolean
 }
 
-const Button: FC<PropsWithChildren<Props>> = ({ children, width = 148, height = 48 }) => {
+const Button: FC<PropsWithChildren<Props>> = ({ children, width = 148, height = 48, reverse }) => {
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
 
   const shadowPadding = 12
   const delta = 8
 
+  const color1 = 'rgb(38, 38, 38)'
+  const color2 = 'rgb(217, 210, 192)'
+
   useEffect(() => {
     const ctx = canvasRef.current?.getContext('2d')
     if (ctx) {
-      ctx.fillStyle = '#D9D2C0'
+      ctx.fillStyle = reverse ? color1 : color2
+      ctx.strokeStyle = reverse ? color2 : color1
+      ctx.lineWidth = 1
 
       ctx.beginPath()
       ctx.moveTo(1, 1)
@@ -41,15 +47,33 @@ const Button: FC<PropsWithChildren<Props>> = ({ children, width = 148, height = 
     <div className="relative">
       <canvas
         ref={canvasRef}
-        className={`absolute -top-[${shadowPadding}px] -left-[${shadowPadding}px] z-[-1]`}
+        className="absolute z-[-1]"
         height={height + delta / 2}
+        style={{
+          top: -shadowPadding,
+          left: -shadowPadding
+        }}
       ></canvas>
       <div
-        className={`w-[${width - delta}px] h-[${
-          height - delta
-        }px] absolute border border-neutral-800 bg-[#D9D2C0] z-[-2] -top-[${shadowPadding}px] -left-[${shadowPadding}px]`}
+        className="absolute border z-[-2]"
+        style={{
+          width: width - delta,
+          height: height - delta,
+          top: -shadowPadding,
+          left: -shadowPadding,
+          backgroundColor: reverse ? color1 : color2
+        }}
       ></div>
-      <button className={`bg-neutral-800 w-[${width - delta}px] h-[${height - delta}px] z-10`}>{children}</button>
+      <button
+        className={`z-10`}
+        style={{
+          width: width - delta,
+          height: height - delta,
+          backgroundColor: reverse ? color2 : color1
+        }}
+      >
+        {children}
+      </button>
     </div>
   )
 }
