@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "npx only-allow pnpm",
     "dev:tomb-web": "pnpm -F '@tomb/tomb-web' run dev",
-    "pretty:tomb-web": "pnpm -F '@tomb/tomb-web' run pretty"
+    "pretty:tomb-web": "pnpm -F '@tomb/tomb-web' run pretty",
+    "build:tomb-web": "pnpm -F '@tomb/tomb-web' run build"
   },
   "keywords": [],
   "author": "",
