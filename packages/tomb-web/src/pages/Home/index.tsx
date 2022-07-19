@@ -6,11 +6,14 @@ import GATE1 from './GATE1.png'
 import DOOR from './DOOR.png'
 import { useRecoilState } from 'recoil'
 import { homePageOnState } from '@/state'
+import { useTitle } from 'ahooks'
 
 const HomePage: FC = () => {
   const hotZoneRef = useRef<HTMLDivElement>(null)
 
   const [on, setOn] = useRecoilState(homePageOnState)
+
+  useTitle('0xTomb')
 
   const handleEnterHotZone = () => {
     if (!on) {
@@ -70,7 +73,7 @@ const HomePage: FC = () => {
       </div>
 
       <main
-        className={classNames('absolute bottom-[120px] left-1/2 -translate-x-1/2 home-transition opacity-0', {
+        className={classNames('absolute bottom-[180px] left-1/2 -translate-x-1/2 home-transition opacity-0', {
           'opacity-100': on
         })}
       >

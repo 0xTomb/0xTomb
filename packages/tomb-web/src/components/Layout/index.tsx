@@ -25,6 +25,12 @@ const TOMB_TEXT_CONFIG = [
     y: 130,
     text: 'AZUKI',
     key: 4
+  },
+  {
+    x: 1170,
+    y: 680,
+    text: 'AZUKI',
+    key: 5
   }
 ]
 
