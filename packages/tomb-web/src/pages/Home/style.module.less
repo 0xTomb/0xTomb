@@ -1,5 +1,22 @@
-.home {
-  background-image: url('./bg.png');
+.bg {
+  background-image: url("./bg.png");
+}
+
+.bg2 {
+  background-image: url("./bg2.jpeg");
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+  animation-duration: 2s;
+  animation-name: bg;
+}
+
+@keyframes bg {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .right-door {
