@@ -1,9 +1,9 @@
 .bg {
-  background-image: url("./bg.png");
+  background-image: url('./bg.png');
 }
 
 .bg2 {
-  background-image: url("./bg2.jpeg");
+  background-image: url('./bg2.jpeg');
   animation-fill-mode: forwards;
   animation-timing-function: ease-in-out;
   animation-duration: 2s;
@@ -19,5 +19,17 @@
   }
 }
 
-.right-door {
+.btn-text {
+  &:after,
+  &:before {
+    content: '+';
+  }
+
+  &:after {
+    margin-left: 0.75rem;
+  }
+
+  &:before {
+    margin-right: 0.75rem;
+  }
 }

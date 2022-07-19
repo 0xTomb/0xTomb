@@ -1,6 +1,6 @@
 import React, { ElementRef, FC, useRef, useState } from 'react'
 import classNames from 'classnames'
-import { Menu } from '@/components'
+import { Button, Menu } from '@/components'
 import styles from './style.module.less'
 import GATE1 from './GATE1.png'
 import DOOR from './DOOR.png'
@@ -33,7 +33,12 @@ const HomePage: FC = () => {
         ref={hotZoneRef}
         onMouseEnter={handleEnterHotZone}
       ></div>
-      <div className="absolute bottom-5 left-8 flex items-end select-none w-3/4 h-3/4">
+      <div
+        className={classNames(
+          'absolute bottom-5 left-8 flex items-end select-none w-3/4 h-3/4 pointer-events-none transition-all duration-1000 delay-1000',
+          { 'opacity-0': on }
+        )}
+      >
         <img src={GATE1} alt="gate1" className="w-2/12 h-full" />
         <img
           src={DOOR}
@@ -48,7 +53,14 @@ const HomePage: FC = () => {
       >
         WELCOME TO 0XTOMB
       </main>
-      <div className="absolute bottom-5 right-8 flex transform -scale-x-[1] items-end select-none w-3/4 h-3/4">
+      <div
+        className={classNames(
+          'absolute bottom-5 right-8 flex transform -scale-x-[1] items-end select-none w-3/4 h-3/4 pointer-events-none transition-all duration-1000 delay-1000',
+          {
+            'opacity-0': on
+          }
+        )}
+      >
         <img src={GATE1} alt="gate1" className="w-2/12 h-full" />
         <img
           src={DOOR}
@@ -57,6 +69,12 @@ const HomePage: FC = () => {
           className="w-5/12 h-full origin-left transition-all duration-[2000ms] transform-gpu"
         />
       </div>
+
+      <main className={classNames('absolute bottom-[160px] left-1/2 -translate-x-1/2 transition-all duration-[2000ms] opacity-0', { 'opacity-100': on })}>
+        <Button>
+          <span className={classNames(styles['btn-text'], 'text-2xl text-white')}>R . I . P</span>
+        </Button>
+      </main>
     </div>
   )
 }
