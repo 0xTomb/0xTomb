@@ -17,7 +17,7 @@ const Menu: FC = () => {
     <menu
       className={classNames(
         styles.menu,
-        'text-[#d9d2c0] w-full bg-neutral-800 h-12 px-3 absolute flex items-center transition-top duration-[2000ms] top-[-32px] z-10',
+        'text-[#d9d2c0] w-full bg-neutral-800 h-12 px-3 absolute flex items-center top-[-32px] z-10 home-transition',
         {
           'top-0': on
         }

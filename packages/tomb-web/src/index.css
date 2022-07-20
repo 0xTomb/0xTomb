@@ -4,13 +4,31 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --on-time: 2000ms;
+  --door-hidden-delay: 1300ms;
+  --door-hidden-time: 1000ms;
+}
+
 @layer components {
   .absolute-screen-center {
     @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
   }
 
   .home-transition {
-    @apply transition-all duration-[2000ms] transform-gpu;
+    @apply transition-all duration-[var(--on-time)];
+  }
+
+  .door-transition {
+    @apply transition-all duration-[var(--door-hidden-time)];
+  }
+
+  .door-hidden-delay {
+    @apply delay-[var(--door-hidden-delay)];
+  }
+
+  .transition-after-door-hidden {
+    @apply delay-[var(--door-hidden-delay)];
   }
 }
 

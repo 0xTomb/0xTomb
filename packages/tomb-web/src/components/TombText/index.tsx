@@ -32,7 +32,9 @@ export const createPortalTombText = (x: number, y: number, text: string) => {
     <TombText
       x={x}
       y={y}
-      className={classNames('-rotate-45 opacity-0 home-transition delay-1000 select-none', { 'opacity-100': on })}
+      className={classNames('-rotate-45 opacity-0 transition-after-door-hidden home-transition select-none', {
+        'opacity-100': on
+      })}
     >
       {text}
     </TombText>,

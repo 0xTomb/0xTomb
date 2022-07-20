@@ -1,3 +1,8 @@
+.left,
+.right {
+  perspective: 1000px;
+}
+
 .bg {
   background-image: url('assets/bg.png');
 }
@@ -6,7 +11,7 @@
   background-image: url('assets/bg2.jpeg');
   animation-fill-mode: forwards;
   animation-timing-function: ease-in-out;
-  animation-duration: 2s;
+  animation-duration: var(--on-time);
   animation-name: bg;
 }
 

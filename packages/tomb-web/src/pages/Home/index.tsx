@@ -17,8 +17,8 @@ const HomePage: FC = () => {
 
   const handleEnterHotZone = () => {
     if (!on) {
-      setOn(true)
       hotZoneRef.current?.removeEventListener('mouseenter', handleEnterHotZone)
+      setOn(true)
     }
   }
 
@@ -37,14 +37,15 @@ const HomePage: FC = () => {
       ></div>
       <div
         className={classNames(
-          'absolute bottom-5 left-8 flex items-end select-none w-3/4 h-3/4 pointer-events-none transition-all duration-1000 delay-1000',
+          styles.left,
+          'absolute bottom-5 left-8 flex items-end select-none w-3/4 h-3/4 pointer-events-none door-transition door-hidden-delay',
           { 'opacity-0': on }
         )}
       >
         <img src={GATE1} alt="gate1" className="w-2/12 h-full" />
         <img
           src={DOOR}
-          style={on ? { transform: 'rotateY(-85deg)' } : {}}
+          style={on ? { transform: 'rotateY(85deg)' } : {}}
           alt="door"
           className="w-[48%] h-full origin-left home-transition"
         />
@@ -57,7 +58,8 @@ const HomePage: FC = () => {
       </main>
       <div
         className={classNames(
-          'absolute bottom-5 right-8 flex transform -scale-x-[1] items-end select-none w-3/4 h-3/4 pointer-events-none transition-all duration-1000 delay-1000',
+          styles.right,
+          'absolute bottom-5 right-8 flex transform -scale-x-[1] items-end select-none w-3/4 h-3/4 pointer-events-none door-transition door-hidden-delay',
           {
             'opacity-0': on
           }
@@ -67,7 +69,7 @@ const HomePage: FC = () => {
         <img
           src={DOOR}
           alt="door"
-          style={on ? { transform: 'rotateY(-85deg)' } : {}}
+          style={on ? { transform: 'rotateY(85deg)' } : {}}
           className="w-[48%] h-full origin-left home-transition"
         />
       </div>
