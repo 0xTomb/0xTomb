@@ -1,19 +1,39 @@
-import React, { FC, useRef } from 'react'
+import React, { FC, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { Button, Layout } from '@/components'
 import styles from './style.module.less'
-import GATE1 from './assets/GATE1.png'
-import DOOR from './assets/DOOR.png'
 import { useRecoilState } from 'recoil'
 import { homePageOnState } from '@/state'
 import { useTitle } from 'ahooks'
+import { BG, BG2, DOOR, GATE1 } from '@/pages/Home/consts'
+
+function loadImage(url: string): Promise<string> {
+  return new Promise((resolve, reject) => {
+    let image: HTMLImageElement | undefined = new Image()
+    image.onload = () => {
+      resolve(url)
+      image = undefined
+    }
+    image.onerror = () => reject(url)
+    image.src = url
+  })
+}
 
 const HomePage: FC = () => {
+  const [loading, setLoading] = useState(true)
+  const [urls, setUrls] = useState<string[]>([])
   const hotZoneRef = useRef<HTMLDivElement>(null)
-
   const [on, setOn] = useRecoilState(homePageOnState)
 
   useTitle('0xTomb')
+  useEffect(() => {
+    console.time('image-load')
+    Promise.all<string>([loadImage(GATE1), loadImage(DOOR), loadImage(BG), loadImage(BG2)]).then((urls) => {
+      console.timeEnd('image-load')
+      setLoading(false)
+      setUrls(urls)
+    })
+  }, [])
 
   const handleEnterHotZone = () => {
     if (!on) {
@@ -22,14 +42,24 @@ const HomePage: FC = () => {
     }
   }
 
+  if (loading) {
+    return <div className="absolute-screen-center">Loading ...</div>
+  }
+
   return (
     <Layout>
       <div
-        className={classNames(styles.bg, 'absolute h-screen w-screen home-transition  z-[-1]', {
+        className={classNames('absolute h-screen w-screen home-transition  z-[-1]', {
           invisible: on
         })}
+        style={{
+          backgroundImage: `url(${urls[2]})`
+        }}
       ></div>
-      <div className={classNames(styles.bg2, 'absolute h-screen w-screen z-[-1]', { hidden: !on })}></div>
+      <div
+        className={classNames(styles.bg2, 'absolute h-screen w-screen z-[-1]', { hidden: !on })}
+        style={{ backgroundImage: `url(${urls[3]})` }}
+      ></div>
       <div
         className={classNames('w-10/12 h-4/5 absolute absolute-screen-center z-20', { hidden: on })}
         ref={hotZoneRef}
@@ -42,9 +72,9 @@ const HomePage: FC = () => {
           { 'opacity-0': on }
         )}
       >
-        <img src={GATE1} alt="gate1" className="w-2/12 h-full" />
+        <img src={urls[0]} alt="gate1" className="w-2/12 h-full" />
         <img
-          src={DOOR}
+          src={urls[1]}
           style={on ? { transform: 'rotateY(85deg)' } : {}}
           alt="door"
           className="w-[48%] h-full origin-left home-transition"
@@ -65,9 +95,9 @@ const HomePage: FC = () => {
           }
         )}
       >
-        <img src={GATE1} alt="gate1" className="w-2/12 h-full" />
+        <img src={urls[0]} alt="gate1" className="w-2/12 h-full" />
         <img
-          src={DOOR}
+          src={urls[1]}
           alt="door"
           style={on ? { transform: 'rotateY(85deg)' } : {}}
           className="w-[48%] h-full origin-left home-transition"

@@ -6,7 +6,7 @@
 
 :root {
   --on-time: 2000ms;
-  --door-hidden-delay: 1300ms;
+  --door-hidden-delay: 1500ms;
   --door-hidden-time: 1000ms;
 }
 
