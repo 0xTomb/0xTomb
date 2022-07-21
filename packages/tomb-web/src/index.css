@@ -32,15 +32,10 @@
   }
 }
 
-@font-face {
-  font-family: ArchitectsDaughter;
-  src: url('./assets/ArchitectsDaughter.ttf');
-}
-
-@font-face {
-  font-family: Bokor;
-  src: url('./assets/Bokor.ttf');
-}
+/*@font-face {*/
+/*  font-family: ArchitectsDaughter;*/
+/*  src: url('./assets/ArchitectsDaughter.ttf');*/
+/*}*/
 
 * {
   font-family: Bokor, serif;

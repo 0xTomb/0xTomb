@@ -6,34 +6,34 @@ import { useRecoilState } from 'recoil'
 import { homePageOnState } from '@/state'
 import { useTitle } from 'ahooks'
 import { BG, BG2, DOOR, GATE1 } from '@/pages/Home/consts'
-
-function loadImage(url: string): Promise<string> {
-  return new Promise((resolve, reject) => {
-    let image: HTMLImageElement | undefined = new Image()
-    image.onload = () => {
-      resolve(url)
-      image = undefined
-    }
-    image.onerror = () => reject(url)
-    image.src = url
-  })
-}
+import { Asset, AssetsLoader } from '@tomb/assets-loader'
 
 const HomePage: FC = () => {
   const [loading, setLoading] = useState(true)
   const [urls, setUrls] = useState<string[]>([])
+  const [loadedNum, setloadedNum] = useState(0)
+
   const hotZoneRef = useRef<HTMLDivElement>(null)
+
   const [on, setOn] = useRecoilState(homePageOnState)
 
-  useTitle('0xTomb')
+  // 创建资源加载器
+  const al = new AssetsLoader([GATE1, DOOR, BG, BG2])
+
   useEffect(() => {
-    console.time('image-load')
-    Promise.all<string>([loadImage(GATE1), loadImage(DOOR), loadImage(BG), loadImage(BG2)]).then((urls) => {
-      console.timeEnd('image-load')
-      setLoading(false)
-      setUrls(urls)
-    })
+    al.asyncStart()
   }, [])
+
+  al.bindLoadedNumChange((num) => {
+    setloadedNum(num)
+  })
+
+  al.bindOnTotalLoaded((assets) => {
+    setLoading(false)
+    setUrls((assets as Asset[]).map((asset) => asset.url))
+  })
+
+  useTitle('0xTomb')
 
   const handleEnterHotZone = () => {
     if (!on) {
@@ -43,7 +43,13 @@ const HomePage: FC = () => {
   }
 
   if (loading) {
-    return <div className="absolute-screen-center">Loading ...</div>
+    return (
+      <div className={classNames(styles.loading, 'absolute-screen-center w-4/6 h-5 border border-neutral-800 rounded-2xl')}>
+        <div className='bg-[#D9D2C0] h-full rounded-2xl transition-[width]' style={{
+          width: `${loadedNum / al.totalAssetsNum * 100}%`,
+        }}></div>
+      </div>
+    )
   }
 
   return (

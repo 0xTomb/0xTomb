@@ -1,0 +1,23 @@
+{
+  "name": "@tomb/assets-loader",
+  "private": false,
+  "version": "0.0.2-0",
+  "files": [
+    "dist/*",
+    "index.d.ts"
+  ],
+  "types": "index.d.ts",
+  "scripts": {
+    "build": "tsc && vite build"
+  },
+  "author": {
+    "name": "LiangNiang",
+    "email": "liangniangbaby@gmail.com"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.6.4",
+    "vite": "^3.0.0"
+  }
+}
