@@ -29,7 +29,9 @@ const HomePage: FC = () => {
   })
 
   al.bindOnTotalLoaded((assets) => {
-    setLoading(false)
+    setTimeout(() => {
+      setLoading(false)
+    }, 150)
     setUrls((assets as Asset[]).map((asset) => asset.url))
   })
 
@@ -44,10 +46,15 @@ const HomePage: FC = () => {
 
   if (loading) {
     return (
-      <div className={classNames(styles.loading, 'absolute-screen-center w-4/6 h-5 border border-neutral-800 rounded-2xl')}>
-        <div className='bg-[#D9D2C0] h-full rounded-2xl transition-[width]' style={{
-          width: `${loadedNum / al.totalAssetsNum * 100}%`,
-        }}></div>
+      <div
+        className={classNames(styles.loading, 'absolute-screen-center w-4/6 h-5 border border-neutral-800 rounded-2xl')}
+      >
+        <div
+          className="bg-[#D9D2C0] h-full rounded-2xl transition-[width]"
+          style={{
+            width: `${(loadedNum / al.totalAssetsNum) * 100}%`
+          }}
+        ></div>
       </div>
     )
   }

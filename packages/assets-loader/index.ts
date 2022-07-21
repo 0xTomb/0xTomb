@@ -17,14 +17,32 @@ export class AssetsLoader {
   onTotalLoaded: (assets: (Asset | FontFace)[]) => void = noop
 
   constructor(...args: string[][] | { type: 'image' | 'font'; urls: string[] }[]) {
-    this.loadedNum = 0
     args.forEach((arg) => {
       if (Array.isArray(arg)) {
         // type image
-        this.assets = arg.map((url) => ({ url, status: 'pending', type: 'image' }))
+        this.assets = [
+          ...this.assets,
+          ...arg.map((url) => ({ url, status: 'pending' as Asset['status'], type: 'image' as Asset['type'] }))
+        ]
       } else {
         // type depends on arg.type
-        this.assets = arg.urls.map((url) => ({ url, status: 'pending', type: arg.type }))
+        this.assets = [
+          ...this.assets,
+          ...arg.urls.map((url) => ({ url, status: 'pending' as Asset['status'], type: arg.type }))
+        ]
+      }
+    })
+
+    return new Proxy(this, {
+      set: (target, key, value) => {
+        if (key === 'loadedNum') {
+          target.loadedNumChange(value)
+
+          if (value === target.totalAssetsNum) {
+            target.onTotalLoaded(target.assets)
+          }
+        }
+        return Reflect.set(target, key, value)
       }
     })
   }
@@ -36,7 +54,6 @@ export class AssetsLoader {
       image.onload = () => {
         imgAsset.status = 'loaded'
         this.loadedNum++
-        this.loadedNumChange(this.loadedNum)
         resolve(imgAsset)
       }
       image.onerror = () => {
@@ -56,7 +73,6 @@ export class AssetsLoader {
         .then((loadedFont) => {
           fontAsset.status = 'loaded'
           this.loadedNum++
-          this.loadedNumChange(this.loadedNum)
           resolve(loadedFont)
         })
         .catch((err) => {
@@ -85,10 +101,7 @@ export class AssetsLoader {
       }
     })
 
-    return Promise.all(combinedPromise).then((assets) => {
-      this.onTotalLoaded(assets)
-      return assets
-    })
+    return Promise.all(combinedPromise)
   }
 
   get totalAssetsNum() {
